@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="links.html"></div>
+<div th:insert="nav.html"></div>
+<div class="container mt-2">
+    <form class="mt-3" th:action="@{'/student/search'}" method="get">
+        <input type="text" class="form-control w-50" name="search">
+        <button class="btn btn-secondary btn-sm">SEARCH</button>
+    </form>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>SURNAME</th>
+                    <th>BIO</th>
+                    <th>AGE</th>
+                    <th>GPA</th>
+                    <th>DETAILS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student: ${list}">
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.id}"></td>
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.name}"></td>
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.surname}"></td>
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.bio}"></td>
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.age}"></td>
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.gpa}"></td>
+                    <td><a class="btn btn-primary" th:href="@{'/student/student-details/' + ${student.id}}">Details</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
