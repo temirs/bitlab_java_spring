@@ -9,8 +9,8 @@
 <body>
 <div class="container mt-3">
     <div layout:fragment="siteContent">
-        <div class="row justify-content-center">
-            <div class="col-6" th:object="${student}">
+        <div class="row">
+            <div class="col-4" th:object="${student}">
                 <form th:action="@{'/student/update-student'}" method="post">
                     <input type="hidden" name="id" th:value="${student.id}">
                     <div class="row mt-3">
@@ -65,6 +65,18 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-12">
+                            <label>CITY</label>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <select class="form-control" name="city.id">
+                                <option th:each="city: ${cities}" th:text="${city.name}" th:value="${city.id}" th:selected="${student.city.id==city.id}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
                             <button class="btn btn-success btn-sm">Update Item</button>
                         </div>
                     </div>
@@ -77,6 +89,52 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="col-4">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>CREDITS</th>
+                            <th>CABINET</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="sub: ${student.subjects}">
+                        <tr>
+                            <td th:text="${sub.name}"></td>
+                            <td th:text="${sub.credit}"></td>
+                            <td th:text="${sub.cabinet}"></td>
+                            <form th:action="@{'/student/delete-subject'}" method="post">
+                                <input type="hidden" name="subject_id" th:value="${sub.id}">
+                                <input type="hidden" name="student_id" th:value="${student.id}">
+                                <td><button class="btn btn-sm btn-danger"> >>> </button></td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="table table-sm">
+                    <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>CREDITS</th>
+                        <th>CABINET</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="sub: ${subjects}">
+                    <tr>
+                        <td th:text="${sub.name}"></td>
+                        <td th:text="${sub.credit}"></td>
+                        <td th:text="${sub.cabinet}"></td>
+                        <form th:action="@{'/student/add-subject'}" method="post">
+                            <input type="hidden" name="subject_id" th:value="${sub.id}">
+                            <input type="hidden" name="student_id" th:value="${student.id}">
+                            <td><button class="btn btn-sm btn-success"> <<< </button></td>
+                        </form>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

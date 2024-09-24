@@ -64,6 +64,18 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-12">
+                            <label>СITY</label>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <select class="form-control" name="city.id">
+                                <option th:each="city: ${cities}" th:text="${city.name}" th:value="${city.id}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
                             <button class="btn btn-secondary btn-sm">Add Student</button>
                         </div>
                     </div>

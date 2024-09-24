@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -33,4 +36,10 @@ public class Student {
     @Column(name = "BIO", columnDefinition = "text")
     private String bio;
 
+    @ManyToOne
+    @JoinColumn(name = "CITY_ID")
+    private City city;
+
+    @ManyToMany
+    private List<Subject> subjects = new ArrayList<>();
 }

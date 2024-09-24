@@ -1,6 +1,6 @@
 package kz.bitlab.firstProject.controller;
 
-import kz.bitlab.firstProject.model.Items;
+import kz.bitlab.firstProject.model.Item;
 import kz.bitlab.firstProject.service.NotebookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class HomeController {
     }
 
     @PostMapping(value = "/add-item")
-    public String addItem(Items item) {
+    public String addItem(Item item) {
         NotebookService.addItem(item);
         return "redirect:/";
     }
@@ -39,7 +39,7 @@ public class HomeController {
     }
 
     @PostMapping(value = "update-item")
-    public String updateItem(Items item) {
+    public String updateItem(Item item) {
         NotebookService.updateItem(item);
         return "redirect:/";
     }

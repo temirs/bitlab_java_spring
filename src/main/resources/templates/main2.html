@@ -23,6 +23,7 @@
                     <th>BIO</th>
                     <th>AGE</th>
                     <th>GPA</th>
+                    <th>City</th>
                     <th>DETAILS</th>
                 </tr>
                 </thead>
@@ -34,6 +35,7 @@
                     <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.bio}"></td>
                     <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.age}"></td>
                     <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.gpa}"></td>
+                    <td th:style="${student.gpa < 3? 'color:red;' : 'color:black;'}" th:text="${student.city.name}"></td>
                     <td><a class="btn btn-primary" th:href="@{'/student/student-details/' + ${student.id}}">Details</a>
                     </td>
                 </tr>
